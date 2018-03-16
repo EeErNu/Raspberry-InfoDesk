@@ -30,6 +30,16 @@
 @import "bootstrap/scss/_utilities";
 @import "bootstrap/scss/_print";
 
-#root {
-  background-color: green;
+.feed {
+  div {
+    margin: 2rem 0 2rem 0;
+    background-color: green;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  em {
+    display: block;
+    text-align: right;
+  }
 }

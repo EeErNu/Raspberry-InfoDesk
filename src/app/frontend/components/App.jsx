@@ -1,38 +1,27 @@
-import React, { Component } from 'react';
-var createReactClass = require('create-react-class');
+import React from 'react';
+import ReactDom from 'react-dom';
+import Feed from './Twit/Feed';
 
-var App = createReactClass ({
-
-  getInitialState: function() {
-      return {
-        tweets: []
-      };
-  },
-
-  componentDidMount() {
-    const get = () => {
-      fetch('/tweet')
-        .then(res => res.json())
-        .then(tweets => this.setState({ tweets }));
-    }
-    setInterval(get, 5 * 1000);
-    get();
-   },
-
+class App extends React.Component {
   render() {
     return (
-      <div>
-        <table>
-          {this.state.tweets.map(tweet =>
-            <tr key={tweet.id}>
-              <td>@{tweet.name}</td>
-              <td>{tweet.text}</td>
-            </tr>
-          )}
-        </table>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-4">
+          </div>
+
+          <div className="col-8">
+            <div clssName="row">
+              <div className="col-12">
+                <Feed />
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }
-});
+}
 
 export default App;
