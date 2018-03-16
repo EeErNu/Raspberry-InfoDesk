@@ -7,9 +7,9 @@ const axios = require('axios');
 const cookieParser = require('cookie-parser');
 
 const env = process.env.NODE_ENV;
-const config = require(`../../config/${env}.json`);
+const config = require(`../../../config/${env}.json`);
 
-const bundler = new Bundler('src/frontend/index.html', {
+const bundler = new Bundler('src/index.html', {
   watch: true,
   logLevel: 3,
 });

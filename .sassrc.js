@@ -4,6 +4,6 @@ const cwd = process.cwd();
 module.exports = {
   "includePaths": [
     path.resolve(cwd, 'node_modules'),
-    path.resolve(cwd, 'src/frontend/style')
+    path.resolve(cwd, 'src/app/frontend/style')
   ]
 };

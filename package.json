@@ -4,9 +4,9 @@
   "description": "Raspberry-InfoDesk",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node src/backend/server.js",
-    "dev": "NODE_ENV=development parcel -p 3000 src/frontend/index.html",
-    "build": "NODE_ENV=production parcel build src/frontend/index.html",
+    "start": "NODE_ENV=development node src/app/backend/server.js",
+    "dev": "NODE_ENV=development parcel -p 3000 src/index.html",
+    "build": "NODE_ENV=production parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eerik Nurme <eerik.nurme@gmail.com>",
