@@ -15,8 +15,9 @@ var Weather = createReactClass ({
         .then(res => res.json())
         .then(temperature => this.setState({ temperature }));
     }
-    setInterval(get, 60 * 60000);
     get();
+    setInterval(get, 30 * 60000);
+
    },
 
   render() {

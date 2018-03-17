@@ -31,7 +31,7 @@ class App extends React.Component {
           </div>
 
           <div className="col-8">
-            <div clssName="row">
+            <div className="row">
               <div className="col-12">
                 <div className="row">
                 </div>
