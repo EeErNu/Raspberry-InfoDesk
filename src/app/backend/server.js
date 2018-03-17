@@ -10,6 +10,24 @@ var $ = require('jquery');
 
 var Twit = require('twit');
 
+
+//----------------------weather
+var weather = require('weather-js');
+
+// Options:
+// search:     location name or zipcode
+// degreeType: F or C
+
+weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
+  if(err) console.log(err);
+
+  // console.log(JSON.stringify(result[0].current.temperature));
+});
+
+
+//----------------------
+
+
 const env = process.env.NODE_ENV;
 const config = require(`../../../config/${env}.json`);
 
@@ -43,8 +61,17 @@ stream.on('tweet', function (tweet) {
   }
 });
 
-app.get('/tweet', async (req, res) => {
+app.get('/api/tweet', async (req, res) => {
     res.json(tweets);
+});
+
+app.get('/api/weather', async (req, res) => {
+  weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
+    if(err) console.log(err);
+    res.json(JSON.stringify(result[0].current.temperature));
+
+    // console.log(JSON.stringify(result[0].current.temperature));
+  });
 });
 
 app.use(bundler.middleware());

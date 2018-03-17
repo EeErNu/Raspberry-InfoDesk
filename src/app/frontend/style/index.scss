@@ -30,9 +30,15 @@
 @import "bootstrap/scss/_utilities";
 @import "bootstrap/scss/_print";
 
+body {
+  background-color: black;
+  color: white;
+}
+
 .feed {
   div {
     margin: 2rem 0 2rem 0;
+    padding: 1rem;
     background-color: green;
   }
   p {

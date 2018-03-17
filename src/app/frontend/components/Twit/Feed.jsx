@@ -11,7 +11,7 @@ var Feed = createReactClass ({
 
   componentDidMount() {
     const get = () => {
-      fetch('/tweet')
+      fetch('/api/tweet')
         .then(res => res.json())
         .then(tweets => this.setState({ tweets }));
     }
