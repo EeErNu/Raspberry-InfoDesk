@@ -35,17 +35,24 @@ body {
   color: white;
 }
 
-.feed {
-  div {
-    margin: 2rem 0 2rem 0;
-    padding: 1rem;
-    background-color: green;
-  }
-  p {
-    margin-bottom: 0;
-  }
-  em {
-    display: block;
-    text-align: right;
+.over-twit {
+  background-color: #1f1d1d;
+  height: 50vh;
+  overflow: hidden;
+
+  .single-twit {
+    div {
+      // margin: 2rem 0 2rem 0;
+      padding: 10px;
+      margin: 10px 0 10px 0;
+      background-color: green;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    em {
+      display: block;
+      text-align: right;
+    }
   }
 }
