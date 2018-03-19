@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var createReactClass = require('create-react-class');
 
-var NewsSecond = createReactClass ({
+var GeneralNews = createReactClass ({
 
   getInitialState: function() {
       return {
@@ -11,7 +11,7 @@ var NewsSecond = createReactClass ({
 
   componentDidMount() {
     const get = () => {
-      fetch('/api/tweet/newss')
+      fetch('/api/tweet/newsf')
         .then(res => res.json())
         .then(tweets => this.setState({ tweets }));
     }
@@ -35,4 +35,4 @@ var NewsSecond = createReactClass ({
   }
 });
 
-export default NewsSecond;
+export default GeneralNews;

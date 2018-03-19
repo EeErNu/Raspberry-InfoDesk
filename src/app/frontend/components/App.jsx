@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Feed from './Twit/Feed';
-import NewsFirst from './Twit/NewsFirst';
-import NewsSecond from './Twit/NewsSecond';
+import TechNews from './Twit/TechNews';
+import GeneralNews from './Twit/GeneralNews';
 import Weather from './Widget/Weather';
 import Watch from './Widget/Watch';
 
@@ -27,7 +26,6 @@ class App extends React.Component {
               <div className="col-12">
 
               </div>
-
             </div>
           </div>
 
@@ -37,13 +35,18 @@ class App extends React.Component {
                 <div className="row">
 
                   <div className="over-twit col-6">
-                    <NewsFirst />
+                    <h1>Git info is here</h1>
                   </div>
                   <div className="over-twit col-6">
-                    <NewsSecond />
+                    <h1>Other info</h1>
                   </div>
-                  <div className="over-twit col-12">
-                    <Feed />
+                  <div className="over-twit col-6">
+                    <h1>TechNews</h1>
+                    <TechNews />
+                  </div>
+                  <div className="over-twit col-6">
+                    <h1>EestiNews</h1>
+                    <GeneralNews />
                   </div>
 
                 </div>
@@ -51,7 +54,6 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-
       </div>
     );
   }

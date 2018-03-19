@@ -43,26 +43,34 @@ var T = new Twit({
 });
 
 
-// NewsFirst feed
-var streamF = T.stream('statuses/filter', { follow: ['575930104', '2899773086']});
+// GeneralNews
+  // @KerstiKaljulaid - 782910704953225216
+  // @ratasjuri - 806373975894933504
+  // @EstonianGovt - 40868132
+var streamF = T.stream('statuses/filter', { track: ['#Estonia', '#Tallinn', '#Tartu'], follow: ['782910704953225216', '806373975894933504', '40868132']});
+
 var newsF = [];
 
 streamF.on('tweet', function (tweet) {
-  if (streamF = ({follow: '575930104'})) {
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAA');
-  }
   newsF.unshift({
     id: tweet.id,
     name: tweet.user.screen_name,
     text: tweet.text
   });
-  if (newsF.length > 3) {
-    newsF = newsF.slice(0, 2);
+  if (newsF.length > 2) {
+    newsF = newsF.slice(0, 1);
   }
 });
 
-// Bottom feed
-var stream = T.stream('statuses/filter', { track: ['#USA', '#SpaceX', '#habrahabr']});
+// TechNews
+  // @Raspberry_Pi - 302666251
+  // @SpaceX - 34743251
+  // @ubuntu - 2480951
+  // @elonmusk - 44196397
+  // @linuxfoundation - 14706299
+  // @newsycombinator- 14335498
+  // @habrahabr
+var stream = T.stream('statuses/filter', { follow: ['302666251', '34743251', '2480951', '44196397', '14706299', '14335498', '18191307']});
 
 var tweets = [];
 
@@ -72,8 +80,8 @@ stream.on('tweet', function (tweet) {
     name: tweet.user.screen_name,
     text: tweet.text
   });
-  if (tweets.length > 3) {
-    tweets = tweets.slice(0, 2);
+  if (tweets.length > 2) {
+    tweets = tweets.slice(0, 1);
   }
 });
 
