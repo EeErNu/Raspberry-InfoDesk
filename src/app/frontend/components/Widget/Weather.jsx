@@ -67,10 +67,10 @@ var Weather = createReactClass ({
               <p>{data.humid}</p>
 
               <p>
-              {data.forecastdate}
-              {data.forecastshortday}
-              {data.forecastLow}
-              {data.forecasthigh}
+              {data.forceastDate}
+              {data.forecastDay}
+              {data.forecastLow}-
+              {data.forecastHigh}
               </p>
             </div>
           )}

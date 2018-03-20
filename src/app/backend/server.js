@@ -12,11 +12,11 @@ var Twit = require('twit');
 
 //----------------------weather
 var weather = require('weather-js');
-//
+
 // weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
 //   if(err) console.log(err);
 //
-//   console.log(JSON.stringify(result[0].current.temperature));
+//   console.log(JSON.stringify(result[0].forecast[0].date));
 // });
 
 //----------------------
@@ -128,10 +128,10 @@ weather.find({search: 'Nijmegen', degreeType: 'C'}, function(err, result) {
     wind: result[0].current.winddisplay,
     humid: result[0].current.humidity,
 
-    forecastLow: result[0].forecast.low,
-    forecastHigh: result[0].forecast.high,
-    forecastDay: result[0].forecast.shortday,
-    forceastDate: result[0].forecast.date
+    forecastLow: result[0].forecast[0].low,
+    forecastHigh: result[0].forecast[0].high,
+    forecastDay: result[0].forecast[0].shortday,
+    forceastDate: result[0].forecast[0].date
   });
 
 });
@@ -145,4 +145,4 @@ app.get('/api/weather', async (req, res) => {
 });
 
 app.use(bundler.middleware());
-app.listen(3000);
+app.listen(8080);
