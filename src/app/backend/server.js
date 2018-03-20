@@ -32,7 +32,27 @@ const bundler = new Bundler('src/index.html', {
 const app = express();
 app.use(cookieParser());
 
-// var T1 = new Twit(secret);
+const request = require('request');
+
+let username = '2f4abda524b258de94bc6879268203c3',
+  password = 'api_token',
+  url = `http://${username}:${password}@toggl.com/api/v8/time_entries?start_date=2017-08-01T15%3A42%3A46%2B02%3A00`;
+
+let toggls = [];
+
+request({ url }, (error, response, body) => {
+  const info = JSON.parse(body);
+  const dur = (info.map(x => x.duration));
+  // const i = (info.map(x => x.duration));
+  const sum = dur.reduce((a, b) => a + b, 0);
+
+  const result = parseInt((sum / 60) / 60);
+
+  toggls.unshift({
+    // id: i,
+    duration: result,
+  });
+});
 
 var T = new Twit({
   consumer_key:         'a1ZHXxBcZsYuwTaSytrUzUvGH',
@@ -94,9 +114,9 @@ app.get('/api/tweet/newsf', async (req, res) => {
     res.json(newsF);
 });
 
-// app.get('/api/tweet/newss', async (req, res) => {
-//     res.json(newsS);
-// });
+app.get('/api/toggl', async (req, res) => {
+  res.json(toggls);
+});
 
 app.get('/api/weather', async (req, res) => {
   weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {

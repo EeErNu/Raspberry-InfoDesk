@@ -26,18 +26,21 @@ export default class Watch extends React.Component {
    });
  }
   render() {
-    var options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long',
+    var time = {
       hour: 'numeric',
       minute: 'numeric',
-      second: 'numeric'
     };
+    var date = {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      weekday: 'short',
+    };
+
     return (
       <div>
-        <h2>It is {this.state.date.toLocaleString("en-US", options)}.</h2>
+        <h1>{this.state.date.toLocaleString("en-EE", time)}</h1>
+        <p>{this.state.date.toLocaleString("en-EE", date)}</p>
       </div>
     );
   }

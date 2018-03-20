@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var createReactClass = require('create-react-class');
 
-var TechNews = createReactClass ({
+var Toggl = createReactClass ({
 
   getInitialState: function() {
       return {
@@ -35,4 +35,4 @@ var TechNews = createReactClass ({
   }
 });
 
-export default TechNews;
+export default Toggl;
