@@ -16,7 +16,7 @@ var weather = require('weather-js');
 // weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
 //   if(err) console.log(err);
 //
-//   // console.log(JSON.stringify(result[0].current.temperature));
+//   console.log(JSON.stringify(result[0].current.temperature));
 // });
 
 //----------------------
@@ -118,11 +118,30 @@ app.get('/api/toggl', async (req, res) => {
   res.json(toggls);
 });
 
-app.get('/api/weather', async (req, res) => {
-  weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
-    if(err) console.log(err);
-    res.json(JSON.stringify(result[0].current.temperature));
+var dataWeather = [];
+weather.find({search: 'Nijmegen', degreeType: 'C'}, function(err, result) {
+  if(err) console.log(err);
+  dataWeather.unshift({
+    name: result[0].location.name,
+    temp: result[0].current.temperature,
+    text: result[0].current.skytext,
+    wind: result[0].current.winddisplay,
+    humid: result[0].current.humidity,
+
+    forecastLow: result[0].forecast.low,
+    forecastHigh: result[0].forecast.high,
+    forecastDay: result[0].forecast.shortday,
+    forceastDate: result[0].forecast.date
   });
+
+});
+
+app.get('/api/weather', async (req, res) => {
+  // weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
+  //   if(err) console.log(err);
+  //   res.json(JSON.stringify(result[0].current.temperature));
+  // });
+  res.json(dataWeather);
 });
 
 app.use(bundler.middleware());

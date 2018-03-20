@@ -26,6 +26,7 @@ const Toggl = createReactClass({
         <div className="single-twit">
           {this.state.duration.map(dur =>
             <div>
+              <h1>TG w/h</h1>
               <p>{dur.duration}</p>
             </div>
           )}

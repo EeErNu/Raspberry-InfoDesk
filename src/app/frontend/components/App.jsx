@@ -33,11 +33,9 @@ class App extends React.Component {
           <div className="col-2">
             <div className="row">
               <div className="col-12">
-                Tg w/h
                 <Toggl />
               </div>
               <div className="col-12">
-                Personal w/h
                 <Toggl />
               </div>
             </div>
