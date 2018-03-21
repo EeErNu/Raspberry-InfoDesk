@@ -5,6 +5,7 @@ import GeneralNews from './Twit/GeneralNews';
 import Weather from './Widget/Weather';
 import Watch from './Widget/Watch';
 import Toggl from './Widget/Toggl';
+import Player from './Widget/Player';
 
 class App extends React.Component {
   render() {
@@ -46,19 +47,21 @@ class App extends React.Component {
               <div className="col-12">
                 <div className="row">
 
-                  <div className="over-twit col-6">
-                    <h1>Git info is here</h1>
-                  </div>
-                  <div className="over-twit col-6">
-                    <h1>Voice Recognition for music player</h1>
-                  </div>
-                  <div className="over-twit col-6">
+                  <div className="over-twit long col-6">
                     <h1>TechNews</h1>
                     <TechNews />
                   </div>
-                  <div className="over-twit col-6">
-                    <h1>EestiNews</h1>
-                    <GeneralNews />
+                  <div className="col-6">
+                    <div className="row">
+                      <div className="over-twit short col-12">
+                        <h1>Radio</h1>
+                        <Player />
+                      </div>
+                      <div className="over-twit short col-12">
+                        <h1>EestiNews</h1>
+                        <GeneralNews />
+                      </div>
+                      </div>
                   </div>
 
                 </div>

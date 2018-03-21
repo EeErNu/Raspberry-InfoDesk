@@ -59,7 +59,7 @@ var T = new Twit({
   consumer_secret:      'EgP5h6J0QhGgFCw1vTOQzNYRmlXTHb1dSzweAP8JCquqAibfO8',
   access_token:         '961682083381989376-yfr9z72h5zXSywvpWAuV9YoesAgJprA',
   access_token_secret:  'oOKsazM6HWA74mo4YR3kbUxMpoeY6M1IkQE2xcYBNm1EL',
-  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+  // timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
 
@@ -100,8 +100,8 @@ stream.on('tweet', function (tweet) {
     name: tweet.user.screen_name,
     text: tweet.text
   });
-  if (tweets.length > 2) {
-    tweets = tweets.slice(0, 1);
+  if (tweets.length > 5) {
+    tweets = tweets.slice(0, 4);
   }
 });
 
@@ -118,31 +118,27 @@ app.get('/api/toggl', async (req, res) => {
   res.json(toggls);
 });
 
-var dataWeather = [];
-weather.find({search: 'Nijmegen', degreeType: 'C'}, function(err, result) {
-  if(err) console.log(err);
-  dataWeather.unshift({
-    name: result[0].location.name,
-    temp: result[0].current.temperature,
-    text: result[0].current.skytext,
-    wind: result[0].current.winddisplay,
-    humid: result[0].current.humidity,
-
-    forecastLow: result[0].forecast[0].low,
-    forecastHigh: result[0].forecast[0].high,
-    forecastDay: result[0].forecast[0].shortday,
-    forceastDate: result[0].forecast[0].date
-  });
-
-});
-
-app.get('/api/weather', async (req, res) => {
-  // weather.find({search: 'Tallinn', degreeType: 'C'}, function(err, result) {
-  //   if(err) console.log(err);
-  //   res.json(JSON.stringify(result[0].current.temperature));
-  // });
-  res.json(dataWeather);
-});
+// var dataWeather = [];
+// weather.find({search: 'Nijmegen', degreeType: 'C'}, function(err, result) {
+//   if(err) console.log(err);
+//   dataWeather.unshift({
+//     name: result[0].location.name,
+//     temp: result[0].current.temperature,
+//     text: result[0].current.skytext,
+//     wind: result[0].current.winddisplay,
+//     humid: result[0].current.humidity,
+//
+//     forecastLow: result[0].forecast[0].low,
+//     forecastHigh: result[0].forecast[0].high,
+//     forecastDay: result[0].forecast[0].shortday,
+//     forceastDate: result[0].forecast[0].date
+//   });
+//
+// });
+//
+// app.get('/api/weather', async (req, res) => {
+//   res.json(dataWeather);
+// });
 
 app.use(bundler.middleware());
 app.listen(8080);

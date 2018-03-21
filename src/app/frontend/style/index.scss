@@ -35,9 +35,16 @@ body {
   color: white;
 }
 
+.long {
+  height: 100vh;
+}
+
+.short {
+  height: 50vh;
+}
+
 .over-twit {
   background-color: #1f1d1d;
-  height: 50vh;
   overflow: hidden;
 
   .single-twit {
