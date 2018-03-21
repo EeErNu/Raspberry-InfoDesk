@@ -34,6 +34,15 @@ app.use(cookieParser());
 
 const request = require('request');
 
+let urlT = 'https://todoist.com/api/v7/projects/get_data?token=2c8e334c6e6a73f85898a4c17c0526dfb55a0b08&project_id=2179066376';
+
+request(urlT, (error, response, body) => {
+  // const info = JSON.parse(body);
+  console.log(error);
+  console.log(body);
+});
+
+
 let username = '2f4abda524b258de94bc6879268203c3',
   password = 'api_token',
   url = `http://${username}:${password}@toggl.com/api/v8/time_entries?start_date=2017-08-01T15%3A42%3A46%2B02%3A00`;
