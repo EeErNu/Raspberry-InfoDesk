@@ -16,8 +16,12 @@ const Toggl = createReactClass({
         .then(res => res.json())
         .then(duration => this.setState({ duration }));
     };
-    setInterval(get, 5 * 1000);
+    this.interval = setInterval(get, 5 * 1000);
     get();
+  },
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   },
 
   render() {
@@ -25,7 +29,7 @@ const Toggl = createReactClass({
       <div>
         <div className="single-twit">
           {this.state.duration.map(dur =>
-            <div>
+            <div key={dur.i}>
               <h1>TG w/h</h1>
               <p>{dur.duration}</p>
             </div>

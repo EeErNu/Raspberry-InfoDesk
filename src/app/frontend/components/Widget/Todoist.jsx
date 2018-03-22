@@ -1,37 +1,31 @@
 import React, { Component } from 'react';
 var createReactClass = require('create-react-class');
+import socketIoClient from 'socket.io-client';
 
-var Todoist = createReactClass ({
-
-  getInitialState: function() {
-      return {
-        todoists: []
-      };
-  },
+class Todoist extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todoists: [],
+      socket: this.props.socket
+    };
+  }
 
   componentDidMount() {
-    const get = () => {
-      fetch('/api/todoist')
-        .then(res => res.json())
-        .then(todoists => this.setState({ todoists }));
-    }
-    setInterval(get, 60000);
-    get();
-   },
+    this.state.socket.on("todoist", (todoist) => {
+      this.setState({ todoists: todoist.reverse().slice(0, 9) });
+    });
+  }
 
   render() {
     return (
       <div>
-        <div className="single-twit">
-          {this.state.todoists.map(todoist =>
-            <ul key={todoist.id}>
-              <li>{todoist.content}</li>
-            </ul>
-          )}
-        </div>
+        {this.state.todoists.map(todoist => (
+          <div key={todoist.id}>{todoist.content}</div>
+        ))}
       </div>
     );
   }
-});
+}
 
 export default Todoist;

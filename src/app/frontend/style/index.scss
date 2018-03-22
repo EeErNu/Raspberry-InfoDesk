@@ -35,28 +35,33 @@ body {
   color: white;
 }
 
-.long {
-  height: 100vh;
-}
-
-.short {
-  height: 50vh;
+.todo {
+  
 }
 
 .over-twit {
   background-color: #1f1d1d;
   overflow: hidden;
 
+  .long {
+    height: 100vh;
+  }
+
+  .short {
+    height: 50vh;
+  }
+
   .single-twit {
     div {
-      // margin: 2rem 0 2rem 0;
       padding: 10px;
       margin: 10px 0 10px 0;
       background-color: green;
     }
+
     p {
       margin-bottom: 0;
     }
+
     em {
       display: block;
       text-align: right;
