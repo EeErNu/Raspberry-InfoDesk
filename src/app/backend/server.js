@@ -36,12 +36,30 @@ const request = require('request');
 
 let urlT = 'https://todoist.com/api/v7/projects/get_data?token=2c8e334c6e6a73f85898a4c17c0526dfb55a0b08&project_id=2179066376';
 
-request(urlT, (error, response, body) => {
-  // const info = JSON.parse(body);
-  console.log(error);
-  console.log(body);
-});
+let todoists = [];
 
+var requestTodoistLoop = setInterval(function() {
+  request(urlT, (error, response, body) => {
+    const info = JSON.parse(body);
+    const cont = info.items.map(x => x.content);
+    const i = info.items.map(x => x.id);
+    console.log(cont);
+
+    todoists.unshift({
+      id: i,
+      content: cont,
+    });
+
+    if (todoists.length > 2) {
+      todoists = todoists.slice(0, 1);
+    }
+
+  });
+},5000);
+
+app.get('/api/todoist', async (req, res) => {
+    res.json(todoists);
+});
 
 let username = '2f4abda524b258de94bc6879268203c3',
   password = 'api_token',
@@ -49,19 +67,25 @@ let username = '2f4abda524b258de94bc6879268203c3',
 
 let toggls = [];
 
-request({ url }, (error, response, body) => {
-  const info = JSON.parse(body);
-  const dur = (info.map(x => x.duration));
-  // const i = (info.map(x => x.duration));
-  const sum = dur.reduce((a, b) => a + b, 0);
+var requestTogglLoop = setInterval(function() {
+  request({ url }, (error, response, body) => {
+    const info = JSON.parse(body);
+    const dur = (info.map(x => x.duration));
+    // const i = (info.map(x => x.duration));
+    const sum = dur.reduce((a, b) => a + b, 0);
 
-  const result = parseInt((sum / 60) / 60);
+    const result = parseInt((sum / 60) / 60);
 
-  toggls.unshift({
-    // id: i,
-    duration: result,
+    toggls.unshift({
+      // id: i,
+      duration: result,
+    });
+
+    if (toggls.length > 1) {
+      toggls = toggls.slice(0, 1);
+    }
   });
-});
+},5000);
 
 var T = new Twit({
   consumer_key:         'a1ZHXxBcZsYuwTaSytrUzUvGH',

@@ -6,6 +6,7 @@ import Weather from './Widget/Weather';
 import Watch from './Widget/Watch';
 import Toggl from './Widget/Toggl';
 import Player from './Widget/Player';
+import Todoist from './Widget/Todoist';
 
 class App extends React.Component {
   render() {
@@ -26,16 +27,13 @@ class App extends React.Component {
               </div>
 
               <div className="col-12">
-
+                <Todoist />
               </div>
             </div>
           </div>
 
           <div className="col-2">
             <div className="row">
-              <div className="col-12">
-                <Toggl />
-              </div>
               <div className="col-12">
                 <Toggl />
               </div>
