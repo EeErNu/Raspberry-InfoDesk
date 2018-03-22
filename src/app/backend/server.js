@@ -185,30 +185,30 @@ streamGeneral.on('tweet', function (tweet) {
 
 // Todoist
 
-// io.on("connection", socket => {
-//   console.log("connected"), setInterval(
-//     () => getApiAndEmit(socket),
-//     10000
-//   );
-//   socket.on("disconnect", () => console.log("disconnected"));
-// });
-//
-// const getApiAndEmit = async socket => {
-//   try {
-//     const res = await axios.get(
-//       'https://todoist.com/api/v7/projects/get_data?token=2c8e334c6e6a73f85898a4c17c0526dfb55a0b08&project_id=2179066376'
-//     );
-//     let todoists = res.data.items.map(x => ({
-//       content: x.content,
-//       id: x.id,
-//       added: x.date_added.substring(0, 6),
-//       due: x.due_date_utc ? x.due_date_utc.substring(0, 6) : "null",
-//     }));
-//     socket.emit("todoist", todoists);
-//   } catch(error) {
-//     console.log(`Error: ${error.code}`);
-//   }
-// };
+io.on("connection", socket => {
+  console.log("connected"), setInterval(
+    () => getApiAndEmit(socket),
+    10000
+  );
+  socket.on("disconnect", () => console.log("disconnected"));
+});
+
+const getApiAndEmit = async socket => {
+  try {
+    const res = await axios.get(
+      'https://todoist.com/api/v7/projects/get_data?token=2c8e334c6e6a73f85898a4c17c0526dfb55a0b08&project_id=2179066376'
+    );
+    let todoists = res.data.items.map(x => ({
+      content: x.content,
+      id: x.id,
+      added: x.date_added.substring(0, 6),
+      due: x.due_date_utc ? x.due_date_utc.substring(0, 6) : "null",
+    }));
+    socket.emit("todoist", todoists);
+  } catch(error) {
+    console.log(`Error: ${error.code}`);
+  }
+};
 
 app.use(bundler.middleware());
 server.listen(7070);

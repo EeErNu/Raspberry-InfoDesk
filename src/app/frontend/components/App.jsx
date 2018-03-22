@@ -9,7 +9,7 @@ import Watch from './Widget/Watch';
 //THE BELOW COMPONENTS ARE FIXED AND READY TO USE
 import TechNews from './Twit/TechNews';
 import GeneralNews from './Twit/GeneralNews';
-// import Todoist from './Widget/Todoist';
+import Todoist from './Widget/Todoist';
 
 class App extends React.Component {
   render() {
@@ -31,6 +31,7 @@ class App extends React.Component {
 
               <div className="col-12">
                 todoist
+                <Todoist socket = {socket} />
               </div>
             </div>
           </div>
