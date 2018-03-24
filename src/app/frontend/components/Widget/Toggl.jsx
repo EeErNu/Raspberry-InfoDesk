@@ -1,43 +1,44 @@
 import React, { Component } from 'react';
+var createReactClass = require('create-react-class');
+import socketIoClient from 'socket.io-client';
 
-const createReactClass = require('create-react-class');
-
-const Toggl = createReactClass({
-
-  getInitialState() {
-    return {
-      duration: [],
+class Toggl extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggls: [],
+      socket: this.props.socket
     };
-  },
+  }
 
   componentDidMount() {
-    const get = () => {
-      fetch('/api/toggl')
-        .then(res => res.json())
-        .then(duration => this.setState({ duration }));
-    };
-    this.interval = setInterval(get, 5 * 1000);
-    get();
-  },
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  },
+    this.state.socket.on("toggl", (toggl) => {
+      this.setState({ toggls: toggl.reverse().slice(0, 1) });
+    });
+  }
 
   render() {
     return (
       <div>
-        <div className="single-twit">
-          {this.state.duration.map(dur =>
-            <div key={dur.i}>
-              <h1>TG w/h</h1>
-              <p>{dur.duration}</p>
+        {this.state.toggls.map(toggl => (
+          <div className="wh" key={toggl.id}>
+            <div className="row">
+              <div className="col-6">
+                <div className="company">
+                  <h1>tg</h1>
+                </div>
+              </div>
+              <div className="col-6">
+                <div className="time">
+                  <h1>{toggl.duration}h</h1>
+                </div>
+              </div>
             </div>
-          )}
-        </div>
+          </div>
+        ))}
       </div>
     );
-  },
-});
+  }
+}
 
 export default Toggl;

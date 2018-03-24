@@ -15,7 +15,7 @@ class GeneralNews extends Component {
     // const { endpoint } = this.state;
     // const socket = socketIoClient(endpoint);
     this.state.socket.on("tweetGeneral", (tweet) => {
-      const tweets = this.state.tweets.slice(0, 2);
+      const tweets = this.state.tweets.slice(0, 1);
       tweets.unshift(tweet);
       this.setState({ tweets })
     });
@@ -24,9 +24,12 @@ class GeneralNews extends Component {
   render() {
     return (
       <div>
-        {this.state.tweets.map(tweet => (
-          <div key={tweet.id}>{tweet.text}</div>
-        ))}
+      {this.state.tweets.map(tweet => (
+        <div className="newsSingle" key={tweet.id}>
+          <p>{tweet.text}</p>
+          <em>by @{tweet.name}</em>
+        </div>
+      ))}
       </div>
     );
   }

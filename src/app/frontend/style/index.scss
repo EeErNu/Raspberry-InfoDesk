@@ -35,36 +35,56 @@ body {
   color: white;
 }
 
-.todo {
-  
+.wh {
+
+  .company, .time {
+    background-color: green;
+  }
 }
 
-.over-twit {
-  background-color: #1f1d1d;
-  overflow: hidden;
+.task {
+  background-color: #e67300;
+  margin: 1rem 0 1rem 0;
+  padding: 1rem;
 
-  .long {
-    height: 100vh;
+  em {
+    background-color: blue;
   }
 
-  .short {
+  .dueto {
+    display: block;
+    text-align: right;
+  }
+}
+
+.news {
+  background-color: #1f1d1d;
+
+  .newsLong {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .newsShort {
+    height: 50vh;
+    overflow: hidden;
+  }
+
+  .radio {
     height: 50vh;
   }
+}
 
-  .single-twit {
-    div {
-      padding: 10px;
-      margin: 10px 0 10px 0;
-      background-color: green;
-    }
+.newsSingle {
+  background-color: green;
+  margin: 1rem 0 1rem 0;
+  padding: 1rem;
 
-    p {
-      margin-bottom: 0;
-    }
-
-    em {
-      display: block;
-      text-align: right;
-    }
+  p {
+    margin: 0;
+  }
+  em {
+    text-align: right;
+    display: block;
   }
 }

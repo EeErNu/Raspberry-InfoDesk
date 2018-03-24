@@ -1,15 +1,16 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import socketIoClient from 'socket.io-client';
-// import Weather from './Widget/Weather';
-import Watch from './Widget/Watch';
-// import Toggl from './Widget/Toggl';
+import Weather from './Widget/Weather';
 // import Player from './Widget/Player';
 
 //THE BELOW COMPONENTS ARE FIXED AND READY TO USE
+import React from 'react';
+import ReactDom from 'react-dom';
+import socketIoClient from 'socket.io-client';
+
 import TechNews from './Twit/TechNews';
 import GeneralNews from './Twit/GeneralNews';
 import Todoist from './Widget/Todoist';
+import Toggl from './Widget/Toggl';
+import Watch from './Widget/Watch';
 
 class App extends React.Component {
   render() {
@@ -19,62 +20,57 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-3">
+          <div className="col-4">
             <div className="row">
               <div className="col-12">
                 <Watch />
               </div>
-
               <div className="col-12">
-                weather
+
+                <div className="row">
+                  <div className="col-8">
+                    <Toggl socket = {socket} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-12">
+                  weather
+                  <Weather socket = {socket} />
+                </div>
               </div>
 
               <div className="col-12">
-                todoist
-                <Todoist socket = {socket} />
-              </div>
-            </div>
-          </div>
+                <div className="radio">
+                  <h1>Radio</h1>
+                </div>
 
-          <div className="col-1">
-            <div className="row">
-              <div className="col-12">
-                toggl
               </div>
             </div>
           </div>
 
           <div className="col-8">
-            <div className="row">
-              <div className="col-12">
+            <div className="row news">
+              <div className="col-6">
+                <div className="newsLong">
+                  <h1>TechNews</h1>
+                  <TechNews socket = {socket} />
+                </div>
+              </div>
+
+              <div className="col-6">
                 <div className="row">
-
-                  <div className="over-twit col-6">
-                    <div className="long">
-                      <h1>TechNews</h1>
-                      <TechNews socket = {socket} />
+                  <div className="col-12">
+                    <h1>Tasks</h1>
+                    <Todoist socket = {socket} />
+                  </div>
+                  <div className="col-12">
+                    <div className="newsShort">
+                      <h1>EestiNews</h1>
+                      <GeneralNews socket = {socket} />
                     </div>
                   </div>
-
-                  <div className="col-6">
-                    <div className="row">
-
-                      <div className="over-twit col-12">
-                        <div className="short">
-                          <h1>Radio</h1>
-
-                        </div>
-                      </div>
-                      <div className="over-twit short col-12">
-                        <div className="short">
-                          <h1>EestiNews</h1>
-                          <GeneralNews socket = {socket} />
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>
