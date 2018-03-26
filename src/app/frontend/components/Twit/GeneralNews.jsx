@@ -15,7 +15,7 @@ class GeneralNews extends Component {
     // const { endpoint } = this.state;
     // const socket = socketIoClient(endpoint);
     this.state.socket.on("tweetGeneral", (tweet) => {
-      const tweets = this.state.tweets.slice(0, 1);
+      const tweets = this.state.tweets.slice(0, 2);
       tweets.unshift(tweet);
       this.setState({ tweets })
     });

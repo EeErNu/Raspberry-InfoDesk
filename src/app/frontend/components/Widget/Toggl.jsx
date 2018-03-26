@@ -22,18 +22,9 @@ class Toggl extends Component {
       <div>
         {this.state.toggls.map(toggl => (
           <div className="wh" key={toggl.id}>
-            <div className="row">
-              <div className="col-6">
-                <div className="company">
-                  <h1>tg</h1>
-                </div>
-              </div>
-              <div className="col-6">
-                <div className="time">
-                  <h1>{toggl.duration}h</h1>
-                </div>
-              </div>
-            </div>
+            <p>
+              <b>tg:</b> <em>{toggl.duration}w/h</em>
+            </p>
           </div>
         ))}
       </div>

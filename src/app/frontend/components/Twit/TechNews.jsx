@@ -13,7 +13,7 @@ class TechNews extends Component {
 
   componentDidMount() {
     this.state.socket.on("tweetTech", (tweet) => {
-      const tweets = this.state.tweets.slice(0, 4);
+      const tweets = this.state.tweets.slice(0, 5);
       tweets.unshift(tweet);
       this.setState({ tweets })
     });

@@ -31,60 +31,16 @@ const request = require('request');
 const server = http.Server(app);
 const io = socketIo(server);
 
-// let toggls = [];
-//
-// var requestTogglLoop = setInterval(function() {
-//   request({ url }, (error, response, body) => {
-//     const info = JSON.parse(body);
-//     console.log(info[0].duration);
-//     const dur = (info.map(x => x.duration));
-//     const i = (info.map(x => x.duration));
-//     const sum = dur.reduce((a, b) => a + b, 0);
-//
-//     const result = parseInt((sum / 60) / 60);
-//
-//     toggls.unshift({
-//       // id: i,
-//       id: i,
-//       duration: result,
-//     });
-//
-//     if (toggls.length > 1) {
-//       toggls = toggls.slice(0, 1);
-//     }
-//   });
-// },10000);
-
-
-
-// let weatherCash;
-// const checkWeather = async () => {
-//   weather.find({search: 'San Francisco, CA', degreeType: 'F'}, function(err, result) {
-//
-//     let weathers = result.map(x => ({
-//       name: result[0].location.name,
-//       temperature: result[0].current.temperature,
-//       skytext: result[0].current.skytext,
-//       wind: result[0].current.winddisplay,
-//       humid: result[0].current.humidity,
-//     }));
-//
-//     console.log(weathers);
-//
-//     if(!_.isEqual(weatherCash, weathers)) {
-//       weatherCash = weathers;
-//       io.sockets.emit("weather", weathers);
-//     }
-//   });
-// };
 
 var dataWeather = [];
 
-weather.find({search: 'Nijmegen', degreeType: 'C'}, function(err, result) {
+weather.find({search: 'Nijmegen, NLD', degreeType: 'C'}, function(err, result) {
   if(err) console.log(err);
 
+  // console.log(result);
+
   dataWeather.unshift({
-    name: result[0].location.name,
+    name: result[0].location.name.substring(0, 8),
     temp: result[0].current.temperature,
     text: result[0].current.skytext,
     wind: result[0].current.winddisplay,

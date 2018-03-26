@@ -1,5 +1,5 @@
-import Weather from './Widget/Weather';
-// import Player from './Widget/Player';
+
+import Player from './Widget/Player';
 
 //THE BELOW COMPONENTS ARE FIXED AND READY TO USE
 import React from 'react';
@@ -11,6 +11,8 @@ import GeneralNews from './Twit/GeneralNews';
 import Todoist from './Widget/Todoist';
 import Toggl from './Widget/Toggl';
 import Watch from './Widget/Watch';
+import Weather from './Widget/Weather';
+import Forecast from './Widget/Forecast';
 
 class App extends React.Component {
   render() {
@@ -22,31 +24,27 @@ class App extends React.Component {
         <div className="row">
           <div className="col-4">
             <div className="row">
-              <div className="col-12">
-                <Watch />
-              </div>
-              <div className="col-12">
 
-                <div className="row">
-                  <div className="col-8">
-                    <Toggl socket = {socket} />
-                  </div>
+              <div className="row col-12">
+                <div className="col-6">
+                  <Watch />
+                  <Toggl socket = {socket} />
                 </div>
-              </div>
-
-              <div className="row">
-                <div className="col-12">
-                  weather
+                <div className="col-6">
                   <Weather socket = {socket} />
                 </div>
               </div>
 
               <div className="col-12">
-                <div className="radio">
-                  <h1>Radio</h1>
-                </div>
-
+                <Forecast socket = {socket} />
               </div>
+
+              <div className="col-12">
+                <div className="radio">
+                  <Player />
+                </div>
+              </div>
+
             </div>
           </div>
 

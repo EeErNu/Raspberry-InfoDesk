@@ -13,7 +13,7 @@ class Todoist extends Component {
 
   componentDidMount() {
     this.state.socket.on("todoist", (todoist) => {
-      this.setState({ todoists: todoist.reverse().slice(0, 2) });
+      this.setState({ todoists: todoist.reverse().slice(0, 5) });
     });
   }
 
@@ -23,13 +23,9 @@ class Todoist extends Component {
         {this.state.todoists.map(todoist => (
           <div className="task" key={todoist.id}>
             <div className="row">
-              <div className="col-6">
-                <em>Added: {todoist.added}</em>
-              </div>
-              <div className="col-6">
-                <div className="dueto">
-                  <em>Due to: {todoist.due}</em>
-                </div>
+              <div className="date col-12">
+                <b>Added: <em>{todoist.added}</em></b>
+                <b>Due to: <em>{todoist.due}</em></b>
               </div>
               <div className="col-12">
                 <p>{todoist.content}</p>

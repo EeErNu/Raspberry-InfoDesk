@@ -35,26 +35,69 @@ body {
   color: white;
 }
 
-.wh {
+.weather {
+  text-align: right;
+  p {
+    margin: 0;
+  }
+}
 
-  .company, .time {
+.forecast {
+  margin: 2px 0 2px 0;
+
+  .day-date {
+    background-color: #e67300;
+  }
+
+  .temperature {
+    background-color: green;
+
+    p {
+      margin-top: 1.3rem;
+    }
+  }
+}
+
+.wh {
+  b, em {
+    padding: 5px;
+  }
+
+  b {
+    background-color: #e67300;
+  }
+
+  em {
     background-color: green;
   }
 }
 
 .task {
   background-color: #e67300;
-  margin: 1rem 0 1rem 0;
-  padding: 1rem;
-
-  em {
-    background-color: blue;
+  margin: 4px 0 4px 0;
+  p {
+    margin-bottom: 5px;
   }
 
-  .dueto {
-    display: block;
-    text-align: right;
+  .date {
+    b {
+      background-color: green;
+
+      em:first-child {
+        background-color: red;
+        padding: 3px;
+      }
+    }
+
+    b:first-child {
+      float: left;
+    }
+
+    b:last-child {
+      float: right;
+    }
   }
+
 }
 
 .news {
@@ -77,8 +120,8 @@ body {
 
 .newsSingle {
   background-color: green;
-  margin: 1rem 0 1rem 0;
-  padding: 1rem;
+  margin: 4px 0 4px 0;
+  padding: 5px 10px;
 
   p {
     margin: 0;
